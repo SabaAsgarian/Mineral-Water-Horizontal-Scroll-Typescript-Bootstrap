@@ -132,7 +132,9 @@ body {
 }
 
 .hero-section-wrapper {
-    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
@@ -140,11 +142,13 @@ body {
     height: calc(100vh - 70px);
 }
 
-.robot-image {
-    height: 800px;
+.hero-image {
+    height: 500px;
     max-width: 100%;
     object-fit: contain;
-    border-radius: 100%;
+    border-bottom-left-radius: 38%;
+    border-bottom-right-radius: 34%;
+
 }
 
 .display-3 {
@@ -346,91 +350,90 @@ PROFILE FLOATING
 ========================================= */
 
 .portfolio {
-/* عرض */
+
 width: 100px;
 
-/* ارتفاع */
+
 height: 100px;
 }
 
-/* Figure پروفایل */
+
 .profile-image {
-/* عرض */
-width: 80px;
 
-/* ارتفاع */
-height: 80px;
+width: 70px;
 
-/* border */
-border: 8px solid #276678;
+
+height: 70px;
+
+
+
 background: #276678;
 
-/* گرد کردن */
 border-radius: 50%;
 
-/* موقعیت relative */
+
 position: relative;
 
-/* Cursor */
+
 cursor: pointer;
 }
 
-/* عکس پروفایل */
+
 .profile-image > img {
 /* اندازه کامل */
 width: 100%;
 
 height: 100%;
 
-/* گرد */
+
 border-radius: 50%;
 
-/* جلوگیری از کشیدگی */
+
 object-fit: cover;
 }
 
-/* لینک‌های شبکه اجتماعی */
+
 .social {
-/* موقعیت absolute */
+
 position: absolute;
 
-/* مرکز */
+
 top: 50%;
 
 left: 50%;
 
-/* رنگ */
+
 color: #276678;
 
-/* اندازه */
+
 font-size: 30px;
 
-/* شروع از مرکز */
+
 transform: translate(-50%, -50%);
 
-/* پشت تصویر */
+
 z-index: -1;
 
-/* transition */
+
 transition: 0.4s;
 }
 
-/* رنگ لینک */
+
 .social a {
 color: inherit;
 }
 
-/* Instagram هنگام hover */
+
 .profile-image:hover .social-instagram {
 transform: translate(-100px, -20px);
 }
 
-/* GitHub هنگام hover */
+
 .profile-image:hover .social-github {
 transform: translate(-100px, -60px);
 }
 
-/* LinkedIn هنگام hover */
+
 .profile-image:hover .social-linkedin {
 transform: translate(-100px, -100px);
 }
