@@ -15,7 +15,7 @@
 
 - Role - Frontend
 
-- How to reach me : with my [instagram](https://www.instagram.com/saba_asgarian_) and [linkedin](https://www.linkedin.com/in/saba-asgarian-69161088)  [gmail](mailto:computer.sabaa@gmail.com)
+- How to reach me : with my [instagram](https://www.instagram.com/saba_asgarian_) and [linkedin](https://www.linkedin.com/in/saba-asgarian-69161088) And [gmail](mailto:computer.sabaa@gmail.com)
 
 <img width="1897" height="872" alt="Image" src="https://github.com/user-attachments/assets/8146c80d-5d38-4012-bacb-d2dcba894210" />
 
