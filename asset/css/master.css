@@ -1,0 +1,442 @@
+@font-face {
+    font-family: "lato";
+    src: url("../font/Lato-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "lato", sans-serif;
+    overflow-x: hidden;
+    background-color: #b1e3fa;
+}
+
+.slider {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
+
+.slider-item {
+    width: 100vw;
+    min-width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #b1e3fa;
+    justify-content: center;
+  
+}
+
+.navbar-custom {
+    width: 100%;
+    height: 70px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.logo-wrapper {
+    flex: 1;
+}
+
+.logo-image {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    border-radius: 50px;
+}
+
+.desktop-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-menu li a {
+    color: #276678;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: color 0.3s;
+}
+
+.desktop-menu li a:hover {
+    color: #5292a5;
+}
+
+.menu-button {
+    background: transparent;
+    border: none;
+    display: none;
+    cursor: pointer;
+    font-size: 35px;
+    color: #276678;
+}
+
+.navbar-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #b1e3fa;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    z-index: 200;
+    text-align: center;
+}
+
+.navbar-menu li {
+    margin: 10px 0;
+}
+
+.navbar-menu li a {
+    color: #276678;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.hide {
+    display: none !important;
+}
+
+.hero-section-wrapper {
+    justify-content: flex-start;
+}
+
+.hero-content {
+    min-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
+}
+
+.robot-image {
+    height: 800px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+.display-3 {
+    color: #276678;
+}
+
+.learnmore-btn {
+    background-color: #4ec9f5;
+    color: #276678;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.learnmore-btn:hover {
+    background-color: #1dbef9;
+    color: #ffffff;
+}
+
+.section-padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.section-label {
+    color: #276678;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    color: #4c4c4c;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #4c4c4c;
+    transition: color 0.3s;
+    margin-bottom: 15px;
+}
+
+.description:hover {
+    color: #5292a5;
+}
+
+.feature-item {
+    color: #4c4c4c;
+    transition: color 0.3s;
+}
+
+.feature-item:hover {
+    color: #5292a5;
+}
+
+.feature-item h5 {
+    color: #276678;
+    margin-top: 15px;
+}
+
+.feature-item p {
+    margin-bottom: 0;
+}
+
+.feature-icon {
+    display: inline-block;
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #276678;
+    transition: color 0.3s;
+}
+
+.feature-item:hover .feature-icon {
+    color: #5292a5;
+}
+
+.integration-image {
+    max-height: 600px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.footer-section {
+    background-color: #b1e3fa;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    color: #276678;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #4c4c4c;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #5292a5;
+}
+
+.footer-logo {
+    max-width: 100%;
+    width: 100px;
+}
+
+@media (max-width: 767.98px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .slider {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+    }
+
+    .slider-item {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .navbar-custom {
+        height: 70px;
+        min-height: 70px;
+        padding: 0 15px;
+    }
+
+    .logo-image {
+        max-width: 140px;
+    }
+
+    .hero-content {
+        min-height: auto;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .robot-image {
+        height: 320px;
+        margin-bottom: 30px;
+    }
+
+    .display-3 {
+        font-size: 2.2rem;
+    }
+
+    .section-padding {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .integration-image {
+        max-height: 400px;
+        margin-bottom: 30px;
+    }
+
+    .footer-section {
+        min-height: auto;
+    }
+}
+
+
+
+
+
+
+/* =========================================
+PROFILE FLOATING
+========================================= */
+
+.portfolio {
+/* عرض */
+width: 100px;
+
+/* ارتفاع */
+height: 100px;
+}
+
+/* Figure پروفایل */
+.profile-image {
+/* عرض */
+width: 80px;
+
+/* ارتفاع */
+height: 80px;
+
+/* border */
+border: 8px solid #276678;
+background: #276678;
+
+/* گرد کردن */
+border-radius: 50%;
+
+/* موقعیت relative */
+position: relative;
+
+/* Cursor */
+cursor: pointer;
+}
+
+/* عکس پروفایل */
+.profile-image > img {
+/* اندازه کامل */
+width: 100%;
+
+height: 100%;
+
+/* گرد */
+border-radius: 50%;
+
+/* جلوگیری از کشیدگی */
+object-fit: cover;
+}
+
+/* لینک‌های شبکه اجتماعی */
+.social {
+/* موقعیت absolute */
+position: absolute;
+
+/* مرکز */
+top: 50%;
+
+left: 50%;
+
+/* رنگ */
+color: #276678;
+
+/* اندازه */
+font-size: 30px;
+
+/* شروع از مرکز */
+transform: translate(-50%, -50%);
+
+/* پشت تصویر */
+z-index: -1;
+
+/* transition */
+transition: 0.4s;
+}
+
+/* رنگ لینک */
+.social a {
+color: inherit;
+}
+
+/* Instagram هنگام hover */
+.profile-image:hover .social-instagram {
+transform: translate(-100px, -20px);
+}
+
+/* GitHub هنگام hover */
+.profile-image:hover .social-github {
+transform: translate(-100px, -60px);
+}
+
+/* LinkedIn هنگام hover */
+.profile-image:hover .social-linkedin {
+transform: translate(-100px, -100px);
+}
+.profile-image:hover .social-email {
+transform: translate(-100px, -140px);
+}
+.profile-image:hover .social-site {
+transform: translate(-100px, -180px);
+}

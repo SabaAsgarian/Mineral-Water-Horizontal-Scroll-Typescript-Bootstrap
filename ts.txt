@@ -1,0 +1,281 @@
+// ==========================================
+// پیدا کردن عنصر slider
+// ==========================================
+
+// HTMLElement یعنی این متغیر یک عنصر HTML است.
+//
+// اگر .slider پیدا نشود، مقدار null برمی‌گردد.
+//
+// برای همین نوع آن را اینطور می‌نویسیم:
+//
+// HTMLElement | null
+const slider =
+  document.querySelector<HTMLElement>(".slider");
+
+
+// ==========================================
+// تابع تنظیم Slider
+// ==========================================
+
+function updateSlider(): void {
+
+  // اگر slider وجود نداشت،
+  // اجرای تابع را متوقف کن.
+  if (!slider) {
+    return;
+  }
+
+
+  // عرض فعلی پنجره مرورگر
+  const sectionWidth: number =
+    window.innerWidth;
+
+
+  // تعداد تمام section های داخل slider
+  const totalSections: number =
+    slider.children.length;
+
+
+  // بررسی می‌کنیم آیا صفحه موبایل است یا نه.
+  //
+  // اگر عرض کمتر از 768 باشد:
+  //
+  // true
+  //
+  // در غیر این صورت:
+  //
+  // false
+  const isMobile: boolean =
+    window.innerWidth < 768;
+
+
+  // ==========================================
+  // DESKTOP
+  // ==========================================
+
+  if (!isMobile) {
+
+
+    // عرض کل slider
+    //
+    // مثال:
+    //
+    // sectionWidth = 1200
+    //
+    // totalSections = 5
+    //
+    // totalWidth = 6000
+    const totalWidth: number =
+      sectionWidth * totalSections;
+
+
+    // عرض slider را برابر مجموع عرض تمام section ها قرار می‌دهیم.
+    slider.style.width =
+      `${totalWidth}px`;
+
+
+    // ========================================
+    // ساخت ارتفاع مصنوعی برای Body
+    // ========================================
+
+    // چون slider به صورت fixed قرار می‌گیرد،
+    // خودش ارتفاع صفحه را ایجاد نمی‌کند.
+    //
+    // پس به body ارتفاع می‌دهیم
+    // تا بتوانیم با scroll عمودی،
+    // slider را افقی حرکت دهیم.
+    document.body.style.height =
+      `${sectionWidth * (totalSections - 1) + window.innerHeight}px`;
+
+
+    // ========================================
+    // پاک کردن Event Listener قبلی
+    // ========================================
+
+    // قبل از اضافه کردن دوباره scroll،
+    // listener قبلی را حذف می‌کنیم.
+    //
+    // دلیل:
+    //
+    // اگر صفحه resize شود،
+    // updateSlider دوباره اجرا می‌شود.
+    //
+    // بدون removeEventListener
+    // ممکن است چند listener ایجاد شود.
+    window.removeEventListener(
+      "scroll",
+      handleScroll
+    );
+
+
+    // اضافه کردن Event Listener جدید
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+
+  } else {
+
+
+    // ========================================
+    // MOBILE
+    // ========================================
+
+    // در موبایل می‌خواهیم سایت
+    // به صورت عمودی scroll شود.
+
+
+    // ارتفاع مصنوعی body را حذف می‌کنیم.
+    document.body.style.height =
+      "auto";
+
+
+    // transform افقی را حذف می‌کنیم.
+    slider.style.transform =
+      "none";
+
+
+    // عرض slider را برابر صفحه قرار می‌دهیم.
+    slider.style.width =
+      "100vw";
+
+
+    // scroll listener را حذف می‌کنیم.
+    //
+    // چون در موبایل دیگر
+    // اسکرول افقی نمی‌خواهیم.
+    window.removeEventListener(
+      "scroll",
+      handleScroll
+    );
+
+  }
+
+}
+
+
+
+// ==========================================
+// تابع حرکت افقی Slider
+// ==========================================
+
+function handleScroll(): void {
+
+  // دوباره بررسی می‌کنیم slider وجود دارد یا نه.
+  if (!slider) {
+    return;
+  }
+
+
+  // عرض صفحه
+  const sectionWidth: number =
+    window.innerWidth;
+
+
+  // مقدار scroll عمودی کاربر
+  //
+  // مثال:
+  //
+  // اگر کاربر 500px اسکرول کرده باشد:
+  //
+  // scrollPosition = 500
+  const scrollPosition: number =
+    window.scrollY;
+
+
+  // تعداد slide ها
+  const totalSections: number =
+    slider.children.length;
+
+
+  // ========================================
+  // حداکثر مقدار حرکت افقی
+  // ========================================
+
+  // مثال:
+  //
+  // عرض صفحه = 1000px
+  //
+  // تعداد section = 5
+  //
+  // maxTranslateX:
+  //
+  // 1000 × (5 - 1)
+  //
+  // = 4000px
+  //
+  // چرا 4؟
+  //
+  // چون section اول از ابتدا روی صفحه قرار دارد.
+  //
+  // برای رفتن به 4 section بعدی
+  // باید 4000px حرکت کنیم.
+  const maxTranslateX: number =
+    sectionWidth * (totalSections - 1);
+
+
+  // ========================================
+  // جلوگیری از حرکت بیشتر از آخرین Slide
+  // ========================================
+
+  // Math.min کوچک‌ترین مقدار را برمی‌گرداند.
+  //
+  // مثال:
+  //
+  // scrollPosition = 5000
+  //
+  // maxTranslateX = 4000
+  //
+  // نتیجه:
+  //
+  // 4000
+  //
+  // پس slider بیشتر از آخرین section حرکت نمی‌کند.
+  const translateX: number =
+    Math.min(
+      scrollPosition,
+      maxTranslateX
+    );
+
+
+  // ========================================
+  // حرکت دادن Slider
+  // ========================================
+
+  // علامت منفی باعث می‌شود
+  // محتوا به سمت چپ حرکت کند.
+  slider.style.transform =
+    `translateX(-${translateX}px)`;
+
+}
+
+
+
+// ==========================================
+// اجرای اولیه
+// ==========================================
+
+// وقتی HTML کاملاً آماده شد
+// updateSlider اجرا می‌شود.
+document.addEventListener(
+  "DOMContentLoaded",
+  (): void => {
+
+    // تنظیم اولیه slider
+    updateSlider();
+
+
+    // ========================================
+    // Resize
+    // ========================================
+
+    // وقتی عرض صفحه تغییر کند،
+    // Slider دوباره محاسبه می‌شود.
+    window.addEventListener(
+      "resize",
+      updateSlider
+    );
+
+  }
+);
